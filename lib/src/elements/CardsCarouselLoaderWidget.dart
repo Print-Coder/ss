@@ -8,14 +8,14 @@ class CardsCarouselLoaderWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      color:Colors.white,
+      color: Colors.white,
       height: 288,
       child: ListView.builder(
         scrollDirection: Axis.horizontal,
         itemCount: 3,
         itemBuilder: (context, index) {
           return Container(
-            width: 292,
+            width: 291,
             margin: EdgeInsets.only(left: 20, right: 20, top: 15, bottom: 20),
             decoration: BoxDecoration(
               color: Theme.of(context).primaryColorLight,
