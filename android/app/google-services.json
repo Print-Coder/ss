@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "942451836199",
+    "project_id": "shopsasta-25897",
+    "storage_bucket": "shopsasta-25897.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:942451836199:android:cd89ed0594978c21739502",
+        "android_client_info": {
+          "package_name": "com.shopsasta.app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "942451836199-erkmhbhcoeecbc10ohou0i1m60lh7erj.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.shopsasta.app",
+            "certificate_hash": "9f61439aeef80f911e067996866d43e0d098d088"
+          }
+        },
+        {
+          "client_id": "942451836199-f81n2tch7d4s0qjk6t9qtol5seht78t5.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAo-6piLUyu5dfaaiiUBsvYicALrDIE9dI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "942451836199-f81n2tch7d4s0qjk6t9qtol5seht78t5.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -1,0 +1,245 @@
+name: ECom
+description: A new Flutter project.
+
+# The following line prevents the package from being accidentally published to
+# pub.dev using `pub publish`. This is preferred for private packages.
+publish_to: 'none' # Remove this line if you wish to publish to pub.dev
+
+# The following defines the version and build number for your application.
+# A version number is three numbers separated by dots, like 1.2.43
+# followed by an optional build number separated by a +.
+# Both the version and the builder number may be overridden in flutter
+# build by specifying --build-name and --build-number, respectively.
+# In Android, build-name is used as versionName while build-number used as versionCode.
+# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
+# In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
+# Read more about iOS versioning at
+# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
+version: 1.0.6
+
+
+environment:
+  sdk: ">=2.7.0 <3.0.0"
+
+dependencies:
+  flutter:
+    sdk: flutter
+
+
+  # The following adds the Cupertino Icons font to your application.
+  # Use with the CupertinoIcons class for iOS style icons.
+  cupertino_icons: ^0.1.3
+  mvc_pattern: 6.3.0
+  # global_configuration: 1.6.0
+  # http: 0.12.2
+  html: 0.14.0+4
+  shared_preferences: ^0.5.12+2
+  intl:
+  dropdown_search: ^0.3.9
+  # flutter_html: 1.0.2
+  flutter_svg: 0.17.4
+  provider:
+  pin_code_fields: ^3.0.0
+  share: ^0.6.5+4
+  intro_slider: ^2.3.3
+  flutter_inappwebview: ^4.0.0+4 
+  configurable_expansion_tile: ^1.0.0
+
+  # location: 3.0.2
+  # webview_flutter: 0.3.24
+  url_launcher: ^5.7.2
+  # firebase_messaging: 7.0.3
+  cached_network_image: ^2.2.0
+  fluttertoast: 4.0.1
+  flutter_staggered_grid_view: 0.3.2
+  # intl_utils: 1.8.0
+  carousel_slider: 2.3.1
+  persistent_bottom_nav_bar: ^3.1.0
+  shimmer: ^1.0.0
+  auto_size_text: ^2.1.0
+
+  firebase_dynamic_links:
+  firebase_core: 
+  # firebase_crashlytics: 
+  firebase_messaging: 
+  overlay_support: ^1.0.5
+  
+dev_dependencies:
+  flutter_test:
+    sdk: flutter
+  flutter_launcher_icons: "^0.8.0"
+
+flutter_icons:
+  android: false
+  ios: true
+  image_path: "assets/icons/SHOPSASTA_ICON.png"
+  adaptive_icon_background: "#0A908A"
+
+# For information on the generic Dart part of this file, see the
+# following page: https://dart.dev/tools/pub/pubspec
+
+# The following section is specific to Flutter.
+flutter:
+
+  # The following line ensures that the Material Icons font is
+  # included with your application, so that you can use the icons in
+  # the material Icons class.
+  uses-material-design: true
+
+  # To add assets to your application, add an assets section, like this:
+  assets:
+    - assets/icons/SHOPSASTA.png
+    - assets/icons/SHOPSASTA_ICON.png
+    - assets/icons/SHOPSASTA_200X45.png
+    - assets/icons/location1.png
+    - assets/icons/intro1.png
+    - assets/icons/whatsapp.png
+    - assets/icons/intro2.png
+    - assets/icons/intro3.png
+    - assets/icons/intro4.png
+    - assets/icons/intro5.png
+    - assets/icons/location.png
+    - assets/icons/deadline.png
+    - assets/icons/delivery-man.png
+    - assets/icons/information.png
+    - assets/icons/earnings32.png
+    - assets/icons/logout.png
+    - assets/icons/pencil.png
+    - assets/icons/referral24.png
+    - assets/icons/rubbish.png
+    - assets/icons/referral256.png
+    - assets/icons/support32.png
+    - assets/icons/terms-and-conditions.png
+    - assets/icons/myorders32.png
+    - assets/icons/search.png
+    - assets/icons/shopping-bag.png
+    - assets/icons/shopping-cart.png
+    - assets/icons/team.png
+    - assets/icons/share.png
+    - assets/icons/user.png
+    - assets/icons/user1.png
+    - assets/icons/discount32.png
+    - assets/icons/get-money32.png
+    - assets/icons/home.png
+    - assets/icons/team.png
+    - assets/icons/search.png
+    - assets/img/banner.jpg
+    - assets/icons/cart.png
+    - assets/icons/sale.png
+    - assets/img/wallet.png
+    - assets/img/visacard.png
+    - assets/img/visa.png
+    - assets/img/united-states-of-america.png
+    - assets/img/united-arab-emirates.png
+    - assets/img/spain.png
+    - assets/img/razorpay.png
+    - assets/img/paypal2.png
+    - assets/img/paypal.png
+    - assets/img/pay_pickup.png
+    - assets/img/netherlands.png
+    - assets/img/my_marker.png
+    - assets/img/mastercard.png
+    - assets/img/marker.png
+    - assets/img/logo.png
+    - assets/img/loading.gif
+    - assets/img/loading_trend.gif
+    - assets/img/loading_card.gif
+    - assets/img/italy.png
+    - assets/img/germany.png
+    - assets/img/france.png
+    - assets/img/china.png
+    - assets/img/cash.png
+    - assets/img/canada.png
+    - assets/img/brazil.png
+    - assets/img/apple_pay.png
+    # - images/a_dot_ham.jpeg
+
+  # An image asset can refer to one or more resolution-specific "variants", see
+  # https://flutter.dev/assets-and-images/#resolution-aware.
+
+  # For details regarding adding assets from package dependencies, see
+  # https://flutter.dev/assets-and-images/#from-packages
+
+  # To add custom fonts to your application, add a fonts section here,
+  # in this "flutter" section. Each entry in this list should have a
+  # "family" key with the font family name, and a "fonts" key with a
+  # list giving the asset and other descriptors for the font. For
+  # example:
+  
+  fonts:
+  - family: CustomIcon
+    fonts:
+      - asset: assets/icons/CustomIcon.ttf
+        # weight: 100
+  - family: Roboto
+    fonts:
+      - asset: assets/fonts/Roboto-Thin.ttf
+        weight: 100
+      - asset: assets/fonts/Roboto-Light.ttf
+        weight: 300
+      - asset: assets/fonts/Roboto-Regular.ttf
+        weight: 400
+      - asset: assets/fonts/Roboto-Medium.ttf
+        weight: 500
+      - asset: assets/fonts/Roboto-Bold.ttf
+        weight: 700
+      - asset: assets/fonts/Roboto-Black.ttf
+        weight: 900
+  - family: Georgia
+    fonts:
+      - asset: assets/fonts/Georgia.ttf
+        weight: 400
+      - asset: assets/fonts/Georgia Regular font.ttf
+        weight: 200
+      - asset: assets/fonts/georgia bold.ttf
+        weight: 800
+      - asset: assets/fonts/georgiab.ttf
+        weight: 600
+      - asset: assets/fonts/georgiaz.ttf
+  - family: Quicksand
+    fonts:      
+      - asset: assets/fonts/Quicksand-Light.ttf
+        weight: 300
+      - asset: assets/fonts/Quicksand-Medium.ttf
+        weight: 400
+      - asset: assets/fonts/Quicksand-Regular.ttf
+        weight: 500
+      - asset: assets/fonts/Quicksand-SemiBold.ttf
+        weight: 600
+      - asset: assets/fonts/Quicksand-Bold.ttf
+        weight: 700
+
+  # - family: Helvetica
+  #   fonts:
+  #     - asset: assets\fonts\Helvetica-Bold.ttf
+  #       weight: 800
+  #     - asset: assets\fonts\Helvetica-BoldOblique.ttf
+  #     - asset: assets\fonts\helvetica-light-587ebe5a59211.ttf
+  #       weight: 200
+  #     - asset: assets\fonts\Helvetica-Oblique.ttf
+  #     - asset: assets\fonts\Helvetica.ttf
+  #       weight: 400
+  - family: Raleway
+    fonts:
+      - asset: assets/fonts/Raleway-Thin.ttf
+        weight: 100
+      - asset: assets/fonts/Raleway-ExtraLight.ttf
+        weight: 200
+      - asset: assets/fonts/Raleway-Light.ttf
+        weight: 300
+      - asset: assets/fonts/Raleway-Regular.ttf
+        weight: 400
+      - asset: assets/fonts/Raleway-Medium.ttf
+        weight: 500
+      - asset: assets/fonts/Raleway-SemiBold.ttf
+        weight: 600
+      - asset: assets/fonts/Raleway-Bold.ttf
+        weight: 700
+      - asset: assets/fonts/Raleway-ExtraBold.ttf
+        weight: 800
+      - asset: assets/fonts/Raleway-Black.ttf
+        weight: 900
+
+  #
+  # For details regarding fonts from package dependencies,
+  # see https://flutter.dev/custom-fonts/#from-packages
