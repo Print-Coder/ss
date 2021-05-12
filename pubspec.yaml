@@ -58,7 +58,7 @@ dependencies:
   auto_size_text: ^2.1.0
 
   firebase_dynamic_links:
-  firebase_core: 
+  firebase_core: ^0.6.0
   # firebase_crashlytics: 
   firebase_messaging: 
   overlay_support: ^1.0.5
