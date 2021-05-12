@@ -47,13 +47,11 @@ class SplashScreenState extends State<SplashScreen> {
   void loadData() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
 
-    Map<bool, String> arg = await DynamicLinkService().handleDynamicLinks();
+    // Map<bool, String> arg = await DynamicLinkService().handleDynamicLinks();
 
-    print("inside navigation $arg");
+    // print("inside navigation $arg");
 
     await Future.delayed(Duration(milliseconds: 1000));
-    // prefs.setString('token',
-    //     "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJwaG9uZSI6Ijc3MDIyMzE4ODkiLCJpYXQiOjE2MTg5NzkzMjUsImV4cCI6MTYzNDUzMTMyNX0.lLDzO3S3BZAiclt5wsUouzQ6EngiqCHnNIl4XxWOILI");
     token = await prefs.getString('token');
 
     if (token != null) {
@@ -70,38 +68,38 @@ class SplashScreenState extends State<SplashScreen> {
         print("inside catch");
 
         await prefs.setBool('isLogin', false);
-        if (arg.keys.toList()[0]) {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (_) => ProductWidget(
-                        fromDeep: true,
-                        linker: arg[true],
-                      )));
+      //   if (arg.keys.toList()[0]) {
+      //     Navigator.push(
+      //         context,
+      //         MaterialPageRoute(
+      //             builder: (_) => ProductWidget(
+      //                   linker: arg[true],
+      //                 )));
 
-          print("arg is not null${arg[true]}");
-        } else if (arg.keys.toList()[0] == false && arg[false] != "null") {
-          prefs.setString("regReferal", arg[false]);
-          Navigator.of(context).pushReplacementNamed('/Pages',
-              arguments: RouteArgument(id: "0", isLogin: false));
-        } else
-          Navigator.of(context).pushReplacementNamed('/Pages',
-              arguments: RouteArgument(id: "0", isLogin: false));
+      //     print("arg is not null${arg[true]}");
+      //   } else if (arg.keys.toList()[0] == false && arg[false] != "null") {
+      //     prefs.setString("regReferal", arg[false]);
+      //     Navigator.of(context).pushReplacementNamed('/Pages',
+      //         arguments: RouteArgument(id: "0", isLogin: false));
+      //   } else
+      //     Navigator.of(context).pushReplacementNamed('/Pages',
+      //         arguments: RouteArgument(id: "0", isLogin: false));
 
-        Fluttertoast.showToast(
-          msg: "Check your Internet Connection",
-          backgroundColor: Colors.grey[400],
-          toastLength: Toast.LENGTH_LONG,
-          gravity: ToastGravity.CENTER,
-          timeInSecForIosWeb: 2,
-        );
+      //   Fluttertoast.showToast(
+      //     msg: "Check your Internet Connection",
+      //     backgroundColor: Colors.grey[400],
+      //     toastLength: Toast.LENGTH_LONG,
+      //     gravity: ToastGravity.CENTER,
+      //     timeInSecForIosWeb: 2,
+      //   );
       }
 //fcm
 
       await _firebaseMessaging.getToken().then((String token) {
         // assert(token != null);
         firebaseToken = token;
-      }).catchError((e) => print(e.toString()));
+          }).catchError((e) => print(e.toString()));
+
       _firebaseMessaging.requestNotificationPermissions();
       _firebaseMessaging.subscribeToTopic('order');
 
@@ -110,22 +108,21 @@ class SplashScreenState extends State<SplashScreen> {
         // stopLoading();
         await prefs.setBool('isLogin', false);
 
-        if (arg.keys.toList()[0]) {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (_) => ProductWidget(
-                        fromDeep: true,
-                        linker: arg[true],
-                      )));
+        // if (arg.keys.toList()[0]) {
+        //   Navigator.push(
+        //       context,
+        //       MaterialPageRoute(
+        //           builder: (_) => ProductWidget(
+        //                 linker: arg[true],
+        //               )));
 
-          print("arg is not null${arg[true]}");
-        } else if (arg.keys.toList()[0] == false && arg[false] != "null") {
-          print("arg is not null${arg[false]}");
+        //   print("arg is not null${arg[true]}");
+        // } else if (arg.keys.toList()[0] == false && arg[false] != "null") {
+        //   print("arg is not null${arg[false]}");
 
-          prefs.setString("regReferal", arg[false]);
-          Navigator.of(context).pushReplacementNamed('/Intro');
-        } else
+        //   prefs.setString("regReferal", arg[false]);
+        //   Navigator.of(context).pushReplacementNamed('/Intro');
+        // } else
           Navigator.of(context).pushReplacementNamed('/Intro');
       } //user login but didn't register , make islogin false and go to intro
       else if (res["status"] != null && res["status"] == false ?? true) {
@@ -133,20 +130,19 @@ class SplashScreenState extends State<SplashScreen> {
 //The Referal Code for registeration is D580E08.Share and earn Cashbacks. Shossasta Application :https://shopsasta.page.link/SC1q66dsZiRPk6xZ6
         await prefs.setBool('isLogin', false);
 
-        if (arg.keys.toList()[0]) {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (_) => ProductWidget(
-                        fromDeep: true,
-                        linker: arg[true],
-                      )));
+        // if (arg.keys.toList()[0]) {
+        //   Navigator.push(
+        //       context,
+        //       MaterialPageRoute(
+        //           builder: (_) => ProductWidget(
+        //                 linker: arg[true],
+        //               )));
 
-          print("arg is not null${arg[true]}");
-        } else if (arg.keys.toList()[0] == false && arg[false] != "null") {
-          prefs.setString("regReferal", arg[false]);
-          Navigator.of(context).pushReplacementNamed('/Intro');
-        } else
+        //   print("arg is not null${arg[true]}");
+        // } else if (arg.keys.toList()[0] == false && arg[false] != "null") {
+        //   prefs.setString("regReferal", arg[false]);
+        //   Navigator.of(context).pushReplacementNamed('/Intro');
+        // } else
           Navigator.of(context).pushReplacementNamed('/Intro');
       } else {
         await prefs.setBool('isLogin', true);
@@ -169,43 +165,41 @@ class SplashScreenState extends State<SplashScreen> {
         //     List<Address>.from(res["addresses"]?.map((x) => x.toMap())));
 
         // await prefs.setString('pinCode', userProvider.addresses[addIndex].zip);
-        if (arg.keys.toList()[0]) {
-          Navigator.push(
-              context,
-              MaterialPageRoute(
-                  builder: (_) => ProductWidget(
-                        fromDeep: true,
-                        linker: arg[true],
-                      )));
+        // if (arg.keys.toList()[0]) {
+        //   Navigator.push(
+        //       context,
+        //       MaterialPageRoute(
+        //           builder: (_) => ProductWidget(
+        //                 linker: arg[true],
+        //               )));
 
-          print("arg is not null${arg[true]}");
-        }
-        //  else {
-        //   prefs.setString("regReferal", arg[false]);
+        //   print("arg is not null${arg[true]}");
         // }
-        else
+        // //  else {
+        // //   prefs.setString("regReferal", arg[false]);
+        // // }
+        // else
           Navigator.of(context).pushReplacementNamed('/Pages',
               arguments: RouteArgument(id: "0", isLogin: true));
       }
     } //no token so go to Intro
     else {
       await prefs.setBool('isLogin', false);
-//Onions is available at best price ₹20.0. Find best deals on Grocery everyday on ShopSasta. Get cashbacks and Save. Share with friends and family and earn. FREE Home Delivery. https://shopsasta.page.link/tsLvjtEWFKVxjQkT9
-      print("token is  null");
-      if (arg.keys.toList()[0]) {
-        Navigator.push(
-            context,
-            MaterialPageRoute(
-                builder: (_) => ProductWidget(
-                      fromDeep: true,
-                      linker: arg[true],
-                    )));
 
-        print("arg is not null${arg[true]}");
-      } else if (arg.keys.toList()[0] == false && arg[false] != "null") {
-        prefs.setString("regReferal", arg[false]);
-        Navigator.of(context).pushReplacementNamed('/Intro');
-      } else
+      print("token is  null");
+      // if (arg.keys.toList()[0]) {
+      //   Navigator.push(
+      //       context,
+      //       MaterialPageRoute(
+      //           builder: (_) => ProductWidget(
+      //                 linker: arg[true],
+      //               )));
+
+      //   print("arg is not null${arg[true]}");
+      // } else if (arg.keys.toList()[0] == false && arg[false] != "null") {
+      //   prefs.setString("regReferal", arg[false]);
+      //   Navigator.of(context).pushReplacementNamed('/Intro');
+      // } else
         Navigator.of(context).pushReplacementNamed('/Intro');
     }
   }

@@ -40,18 +40,12 @@ import 'package:ECom/src/pages/widget/pincodeFab.dart';
 //Cauliflower is avilable at cheapest Price.You can Share and Earn Cashback.Here is the link for the product
 // ignore: must_be_immutable https://shopsasta.page.link/7aXSbi5cS3vDdZ7X9
 class ProductWidget extends StatefulWidget {
-  bool fromDeep = false;
   Item itemData;
   String linker;
   RouteArgument routeArgument;
   String product;
   ProductWidget(
-      {Key key,
-      this.linker,
-      this.itemData,
-      this.product,
-      this.fromDeep = false,
-      this.routeArgument})
+      {Key key, this.linker, this.itemData, this.product, this.routeArgument})
       : super(key: key);
 
   @override
@@ -865,59 +859,50 @@ class _ProductWidgetState extends State<ProductWidget> {
                                 // Text(Helper.skipHtml(itemData)),
                                 // widget.product != null
                                 //     ?
-                                widget.fromDeep
-                                    ? Container()
-                                    : Padding(
-                                        padding: const EdgeInsets.only(
-                                            top: 0,
-                                            left: 20,
-                                            right: 20,
-                                            bottom: 10),
-                                        child: Column(
-                                          crossAxisAlignment:
-                                              CrossAxisAlignment.start,
-                                          children: [
-                                            Row(
-                                              mainAxisAlignment:
-                                                  MainAxisAlignment
-                                                      .spaceBetween,
-                                              children: [
-                                                FittedBox(
-                                                  fit: BoxFit.fitWidth,
-                                                  child: Text(
-                                                    "Do You Also Want ...?",
-                                                    style: TextStyle(
-                                                        color: Theme.of(context)
-                                                            .accentColor,
-                                                        fontSize: 18,
-                                                        fontWeight:
-                                                            FontWeight.w600),
-                                                    maxLines: 1,
-                                                    softWrap: false,
-                                                    overflow: TextOverflow.fade,
-                                                  ),
-                                                ),
-                                              ],
+                                Padding(
+                                  padding: const EdgeInsets.only(
+                                      top: 0, left: 20, right: 20, bottom: 10),
+                                  child: Column(
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
+                                    children: [
+                                      Row(
+                                        mainAxisAlignment:
+                                            MainAxisAlignment.spaceBetween,
+                                        children: [
+                                          FittedBox(
+                                            fit: BoxFit.fitWidth,
+                                            child: Text(
+                                              "Do You Also Want ...?",
+                                              style: TextStyle(
+                                                  color: Theme.of(context)
+                                                      .accentColor,
+                                                  fontSize: 18,
+                                                  fontWeight: FontWeight.w600),
+                                              maxLines: 1,
+                                              softWrap: false,
+                                              overflow: TextOverflow.fade,
                                             ),
-                                            // if (settingsRepo.deliveryAddress.value?.address != null)
-                                            //   Padding(
-                                            //     padding: const EdgeInsets.only(top: 12),
-                                            //     child: Text(
-                                            //       near_to + " " + (settingsRepo.deliveryAddress.value?.address),
-                                            //       style: Theme.of(context).textTheme.caption,
-                                            //     ),
-                                            //   ),
-                                          ],
-                                        ),
+                                          ),
+                                        ],
                                       ),
+                                      // if (settingsRepo.deliveryAddress.value?.address != null)
+                                      //   Padding(
+                                      //     padding: const EdgeInsets.only(top: 12),
+                                      //     child: Text(
+                                      //       near_to + " " + (settingsRepo.deliveryAddress.value?.address),
+                                      //       style: Theme.of(context).textTheme.caption,
+                                      //     ),
+                                      //   ),
+                                    ],
+                                  ),
+                                ),
                                 // : Container(),
                                 // widget.product != null
                                 //     ?
-                                widget.fromDeep
-                                    ? Container()
-                                    : BottomCardsCarouselWidget(
-                                        EComList: catList,
-                                        heroTag: 'home_top_ECom2')
+                                BottomCardsCarouselWidget(
+                                    EComList: catList,
+                                    heroTag: 'home_top_ECom2')
                                 // : Container(),
                                 // ReviewsListWidget(
                                 //   reviewsList: _con.product.productReviews,

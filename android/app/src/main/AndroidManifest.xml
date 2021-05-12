@@ -11,7 +11,7 @@
 
     <application
         android:name="io.flutter.app.FlutterApplication"
-        android:label="shopsasta"
+        android:label="SS"
         android:icon="@mipmap/ic_launcher"
         android:usesCleartextTraffic="true"
         >
@@ -58,8 +58,8 @@
         <meta-data
             android:name="flutterEmbedding"
             android:value="2" />
-<!--        <meta-data-->
-<!--            android:name="com.google.firebase.messaging.default_notification_icon"-->
-<!--            android:resource="@mipmap/ic_shopsasta_icon" />-->
+        <meta-data
+            android:name="com.google.firebase.messaging.default_notification_icon"
+            android:resource="@mipmap/ic_shopsasta_icon" />
     </application>
 </manifest>

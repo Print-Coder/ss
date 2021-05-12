@@ -11,12 +11,12 @@ if (flutterRoot == null) {
     throw new GradleException("Flutter SDK not found. Define location with flutter.sdk in the local.properties file.")
 }
 
-def flutterVersionCode = '7'
+def flutterVersionCode = '6'
 if (flutterVersionCode == null) {
     flutterVersionCode = '2'
 }
 
-def flutterVersionName = '1.0.7'
+def flutterVersionName = '1.0.6'
 if (flutterVersionName == null) {
     flutterVersionName = '1.0'
 }
@@ -27,7 +27,7 @@ apply from: "$flutterRoot/packages/flutter_tools/gradle/flutter.gradle"
 apply plugin: 'com.google.gms.google-services'
 
 android {
-    compileSdkVersion 29
+    compileSdkVersion 28
 
     sourceSets {
         main.java.srcDirs += 'src/main/kotlin'
@@ -76,7 +76,7 @@ dependencies {
     // implementation 'com.google.firebase:firebase-analytics'
     implementation 'com.google.firebase:firebase-messaging'
 
-    implementation 'com.google.firebase:firebase-dynamic-links-ktx'
+    // implementation 'com.google.firebase:firebase-dynamic-links-ktx'
 //    implementation 'com.braintreepayments.api:braintree:2.22.0'
     // implementation 'com.google.firebase:firebase-crashlytics'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk7:$kotlin_version"

@@ -3,7 +3,7 @@ import 'package:ECom/src/models/dynamicLink.dart';
 import 'package:ECom/src/models/orderData.dart';
 import 'package:ECom/src/pages/orders/orderDetailsFCM.dart';
 import 'package:ECom/src/pages/productDetails/product.dart';
-import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
+// import 'package:firebase_dynamic_links/firebase_dynamic_links.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 
 import 'package:ECom/src/api/apiServices.dart';
@@ -59,7 +59,6 @@ bool isRegister = false;
 class _HomeWidgetState extends State<HomeWidget> with WidgetsBindingObserver {
   List<Item> productList;
   List<HeaderJson> categoryList = [];
-  List<String> recItem;
   int index = 0;
   final FirebaseMessaging _firebaseMessaging = FirebaseMessaging();
 
@@ -212,84 +211,82 @@ class _HomeWidgetState extends State<HomeWidget> with WidgetsBindingObserver {
         // : null
         ;
 
-    WidgetsBinding.instance.addObserver(this);
+    // WidgetsBinding.instance.addObserver(this);
   }
 
-  @override
-  void dispose() {
-    super.dispose();
+  // @override
+  // void dispose() {
+  //   super.dispose();
 
-    WidgetsBinding.instance.removeObserver(this);
-  }
+  //   WidgetsBinding.instance.removeObserver(this);
+  // }
 
 //------------------- dynamic link block start----------------------//
-  @override
-  void didChangeAppLifecycleState(AppLifecycleState state) async {
-    super.didChangeAppLifecycleState(state);
+  // @override
+  // void didChangeAppLifecycleState(AppLifecycleState state) async {
+  //   super.didChangeAppLifecycleState(state);
 
-    FirebaseDynamicLinks.instance.onLink(
-      onSuccess: (PendingDynamicLinkData dynamicLink) async {
-        print(
-            "dynamic link inside on link ${dynamicLink.link.pathSegments.last}");
+  //   FirebaseDynamicLinks.instance.onLink(
+  //     onSuccess: (PendingDynamicLinkData dynamicLink) async {
+  //       print(
+  //           "dynamic link inside on link ${dynamicLink.link.pathSegments.last}");
 
-        switch (state) {
-          case AppLifecycleState.resumed:
-            Map<bool, String> arg =
-                DynamicLinkService().handleDeepLink(dynamicLink);
-            print("resumed ${arg}");
+  //       switch (state) {
+  //         case AppLifecycleState.resumed:
+  //           Map<bool, String> arg =
+  //               DynamicLinkService().handleDeepLink(dynamicLink);
+  //           print("resumed ${arg}");
 
-            if (arg.keys.toList()[0]) {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (_) => ProductWidget(
-                            // fromDeep: true,
-                            linker: arg[true],
-                          )));
+  //           if (arg.keys.toList()[0]) {
+  //             Navigator.push(
+  //                 context,
+  //                 MaterialPageRoute(
+  //                     builder: (_) => ProductWidget(
+  //                           linker: arg[true],
+  //                         )));
 
-              print("arg is not null${arg[true]}");
-            } else if (arg.keys.toList()[0] == false && arg[false] != "null") {
-              SharedPreferences pref = await SharedPreferences.getInstance();
-              print(arg[false]);
-              pref.setString("regReferal", arg[false]);
-            }
-            break;
-          case AppLifecycleState.inactive:
-            print("inactive ${dynamicLink.link.pathSegments.last}");
+  //             print("arg is not null${arg[true]}");
+  //           } else if (arg.keys.toList()[0] == false && arg[false] != "null") {
+  //             SharedPreferences pref = await SharedPreferences.getInstance();
+  //             print(arg[false]);
+  //             pref.setString("regReferal", arg[false]);
+  //           }
+  //           break;
+  //         case AppLifecycleState.inactive:
+  //           print("inactive ${dynamicLink.link.pathSegments.last}");
 
-            break;
-          case AppLifecycleState.paused:
-            print("paused ${dynamicLink.link.pathSegments.last}");
+  //           break;
+  //         case AppLifecycleState.paused:
+  //           print("paused ${dynamicLink.link.pathSegments.last}");
 
-            Map<bool, String> arg =
-                await DynamicLinkService().handleDynamicLinks();
+  //           Map<bool, String> arg =
+  //               await DynamicLinkService().handleDynamicLinks();
 
-            if (arg.keys.toList()[0]) {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (_) => ProductWidget(
-                            //  fromDeep: true,
-                            linker: arg[true],
-                          )));
+  //           if (arg.keys.toList()[0]) {
+  //             Navigator.push(
+  //                 context,
+  //                 MaterialPageRoute(
+  //                     builder: (_) => ProductWidget(
+  //                           linker: arg[true],
+  //                         )));
 
-              print("arg is not null${arg[true]}");
-            } else if (arg.keys.toList()[0] == false && arg[false] != "null") {
-              SharedPreferences pref = await SharedPreferences.getInstance();
-              pref.setString("regReferal", arg[false]);
-            }
-            break;
-          case AppLifecycleState.detached:
-            print("detached ${dynamicLink.link.pathSegments.last}");
+  //             print("arg is not null${arg[true]}");
+  //           } else if (arg.keys.toList()[0] == false && arg[false] != "null") {
+  //             SharedPreferences pref = await SharedPreferences.getInstance();
+  //             pref.setString("regReferal", arg[false]);
+  //           }
+  //           break;
+  //         case AppLifecycleState.detached:
+  //           print("detached ${dynamicLink.link.pathSegments.last}");
 
-            break;
-        }
-      },
-      onError: (OnLinkErrorException e) async {
-        print('Link Failed: ${e.message}');
-      },
-    );
-  }
+  //           break;
+  //       }
+  //     },
+  //     onError: (OnLinkErrorException e) async {
+  //       print('Link Failed: ${e.message}');
+  //     },
+  //   );
+  // }
 //-------------------dynamic link block start----------------------//
 
 //
@@ -307,7 +304,6 @@ class _HomeWidgetState extends State<HomeWidget> with WidgetsBindingObserver {
     "HouseHolds": {},
     "Healthier Food": {},
   };
-  //o
   Map<String, String> homeJsonUrl = {
     "All Groceries": "",
     "Deals of the Day": "",
@@ -315,7 +311,7 @@ class _HomeWidgetState extends State<HomeWidget> with WidgetsBindingObserver {
     "HouseHolds": "",
     "Healthier Food": "",
   };
-
+  List<String> recItem;
   bool isLogin;
   getProductList({bool refresh}) async {
     refresh ? print("refresh is true") : showLoading();
@@ -524,280 +520,256 @@ class _HomeWidgetState extends State<HomeWidget> with WidgetsBindingObserver {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    return AnimatedSwitcher(
-        duration: const Duration(milliseconds: 1000),
-        transitionBuilder: (Widget child, Animation<double> animation) {
-          final offsetAnimation =
-              Tween<Offset>(begin: Offset(0.0, 1.0), end: Offset(0.0, 0.0))
-                  .animate(animation);
-
-          return FadeTransition(
-            opacity: animation,
-            child: child,
-          );
-        },
-        child: _isLoading
-            ? Scaffold(
-                key: UniqueKey(),
-                backgroundColor: Colors.white,
-                appBar: customAppBar(context),
-                body: SingleChildScrollView(
-                  child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      mainAxisSize: MainAxisSize.max,
-                      children: [
-                        Shimmer.fromColors(
-                            baseColor: Colors.grey[400],
-                            highlightColor: Colors.white,
-                            child: CategoryListLoad()),
-                        Padding(
-                          padding: const EdgeInsets.only(top: 8.0),
-                          child: Center(
-                            child: Image.asset(
-                              "assets/img/loading.gif",
-                              height: 100,
-                              width: SizeConfig.w * 0.8,
-                              fit: BoxFit.fitWidth,
-                            ),
-                          ),
+    return _isLoading
+        ? Scaffold(
+            backgroundColor: Colors.white,
+            appBar: customAppBar(context),
+            body: SingleChildScrollView(
+              child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisSize: MainAxisSize.max,
+                  children: [
+                    Shimmer.fromColors(
+                        baseColor: Colors.grey[400],
+                        highlightColor: Colors.white,
+                        child: CategoryListLoad()),
+                    Padding(
+                      padding: const EdgeInsets.only(top: 8.0),
+                      child: Center(
+                        child: Image.asset(
+                          'assets/img/loading.gif',
+                          height: 100,
+                          width: SizeConfig.w * 0.8,
+                          fit: BoxFit.fitWidth,
+                          // width: double.infinity,
+                          // height: 140,
                         ),
-                        HomeLoadWidget()
-                      ]),
-                ),
-              )
-            : Consumer<UserData>(builder: (context, userData, ch) {
-                return SafeArea(
-                  key: UniqueKey(),
-                  child: Scaffold(
-                    backgroundColor: Colors.white,
-                    appBar: PreferredSize(
-                      preferredSize: Size.fromHeight(SizeConfig.h * 0.11),
-                      child: AppBar(
-                        flexibleSpace: Container(
-                          // margin: EdgeInsets.only(top: SizeConfig.h * 0.037),
-                          // padding: EdgeInsets.only(left: SizeConfig.w * 0.035),
-                          // decoration: BoxDecoration(
-                          //   border: Border(
-                          //     bottom: BorderSide(width: 1.0, color: Colors.grey[300]),
-                          //   ),
-                          // ),
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.center,
-                            children: <Widget>[
-                              Padding(
-                                padding:
-                                    EdgeInsets.only(left: SizeConfig.w * 0.045),
-                                child: Row(
-                                  mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
-                                  children: <Widget>[
-                                    // Text("shopsasta",
-                                    //     style: Theme.of(context)
-                                    //         .textTheme
-                                    //         .headline5
-                                    //         .copyWith(
-                                    //           fontWeight: FontWeight.w800,
-                                    //           fontFamily: "QuickSand",
-                                    //           fontSize: SizeConfig.w * 0.062,
-                                    //         )
-                                    //         .merge(
-                                    //           TextStyle(
-                                    //               letterSpacing: 1.3,
-                                    //               color: Theme.of(context)
-                                    //                   .primaryColor),
-                                    //         )),
-                                    Image.asset(
-                                      'assets/icons/SHOPSASTA_200X45.png',
-                                      width: SizeConfig.w * 0.29,
-                                    ),
-                                    Spacer(),
-                                    GestureDetector(
-                                        onTap: () {
-                                          // showSearch(context: context, delegate: ProductSearch());
-                                          Navigator.of(context)
-                                              .pushNamed('/Search');
-                                        },
-                                        child: searchIcon(context)),
-                                    new ShoppingCartButtonWidget(
-                                        iconColor:
-                                            Theme.of(context).primaryColorLight,
-                                        labelColor:
-                                            Theme.of(context).primaryColor),
-                                  ],
-                                ),
-                              ),
-                              CategoryList(
-                                isSub: false,
-                              ),
-                              Divider(
-                                  thickness: 1.2,
-                                  height: 1.2,
-                                  color: Colors.grey[300]),
-                            ],
-                          ),
-                        ),
-                        automaticallyImplyLeading: false,
-                        backgroundColor: Colors.white,
-                        elevation: 0,
                       ),
                     ),
-                    body: RefreshIndicator(
-                      onRefresh: () => getProductList(refresh: true),
-                      child: SingleChildScrollView(
-                        child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            mainAxisSize: MainAxisSize.max,
-                            children: [
-                              Padding(
-                                padding: const EdgeInsets.only(top: 8.0),
-                                child: HomeSliderWidget(slides: recItem),
-                              ),
-                              Consumer<ProductListData>(
-                                  builder: (context, productListData, ch) {
-                                return !(productListData?.stockStatus ?? true)
-                                    ? Container(
-                                        alignment: Alignment.center,
-                                        width: SizeConfig.w,
-                                        height: 30.0,
-                                        color:
-                                            // Colors.redAccent,
+                    HomeLoadWidget()
+                  ]),
+            ),
+          )
+        : Consumer<UserData>(builder: (context, userData, ch) {
+            return SafeArea(
+              child: Scaffold(
+                backgroundColor: Colors.white,
+                appBar: PreferredSize(
+                  preferredSize: Size.fromHeight(SizeConfig.h * 0.11),
+                  child: AppBar(
+                    flexibleSpace: Container(
+                      // margin: EdgeInsets.only(top: SizeConfig.h * 0.037),
+                      // padding: EdgeInsets.only(left: SizeConfig.w * 0.035),
+                      // decoration: BoxDecoration(
+                      //   border: Border(
+                      //     bottom: BorderSide(width: 1.0, color: Colors.grey[300]),
+                      //   ),
+                      // ),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: <Widget>[
+                          Padding(
+                            padding:
+                                EdgeInsets.only(left: SizeConfig.w * 0.045),
+                            child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                // Text("shopsasta",
+                                //     style: Theme.of(context)
+                                //         .textTheme
+                                //         .headline5
+                                //         .copyWith(
+                                //           fontWeight: FontWeight.w800,
+                                //           fontFamily: "QuickSand",
+                                //           fontSize: SizeConfig.w * 0.062,
+                                //         )
+                                //         .merge(
+                                //           TextStyle(
+                                //               letterSpacing: 1.3,
+                                //               color: Theme.of(context)
+                                //                   .primaryColor),
+                                //         )),
+                                Image.asset(
+                                  'assets/icons/SHOPSASTA_200X45.png',
+                                  width: SizeConfig.w * 0.29,
+                                ),
+                                Spacer(),
+                                GestureDetector(
+                                    onTap: () {
+                                      // showSearch(context: context, delegate: ProductSearch());
+                                      Navigator.of(context)
+                                          .pushNamed('/Search');
+                                    },
+                                    child: searchIcon(context)),
+                                new ShoppingCartButtonWidget(
+                                    iconColor:
+                                        Theme.of(context).primaryColorLight,
+                                    labelColor: Theme.of(context).primaryColor),
+                              ],
+                            ),
+                          ),
+                          CategoryList(
+                            isSub: false,
+                          ),
+                          Divider(
+                              thickness: 1.2,
+                              height: 1.2,
+                              color: Colors.grey[300]),
+                        ],
+                      ),
+                    ),
+                    automaticallyImplyLeading: false,
+                    backgroundColor: Colors.white,
+                    elevation: 0,
+                  ),
+                ),
+                body: RefreshIndicator(
+                  onRefresh: () => getProductList(refresh: true),
+                  child: SingleChildScrollView(
+                    child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        mainAxisSize: MainAxisSize.max,
+                        children: [
+                          Padding(
+                            padding: const EdgeInsets.only(top: 8.0),
+                            child: HomeSliderWidget(slides: recItem),
+                          ),
+                          Consumer<ProductListData>(
+                              builder: (context, productListData, ch) {
+                            return !(productListData?.stockStatus ?? true)
+                                ? Container(
+                                    alignment: Alignment.center,
+                                    width: SizeConfig.w,
+                                    height: 30.0,
+                                    color:
+                                        // Colors.redAccent,
 
-                                            Colors.white,
-                                        child: Center(
-                                            child: AutoSizeText(
-                                          "We are not delivering in your area yet",
-                                          maxLines: 1,
-                                          style: TextStyle(
-                                              color:
-                                                  // Colors.white),
+                                        Colors.white,
+                                    child: Center(
+                                        child: AutoSizeText(
+                                      "We are not delivering in your area yet",
+                                      maxLines: 1,
+                                      style: TextStyle(
+                                          color:
+                                              // Colors.white),
 
-                                                  Colors.redAccent),
-                                        )))
-                                    : Container();
-                              }),
-                              // All Groceries
-                              ListView.separated(
-                                  physics: NeverScrollableScrollPhysics(),
-                                  shrinkWrap: true,
-                                  separatorBuilder:
-                                      (context, sepearatedIndecx) {
-                                    return Container(height: 10);
-                                  },
-                                  itemCount: homeJson.length,
-                                  itemBuilder: (context, homeIndex) {
-                                    if (homeJson.values
-                                            .toList()[homeIndex]
-                                            .values
-                                            .toList()[0]
-                                            ?.isNotEmpty ??
-                                        true)
-                                      return Column(children: <Widget>[
-                                        HomeTitle(
-                                          viewAllPressed: () async {
-                                            // Provider.of<ProductListData>(context,
-                                            //         listen: false)
-                                            //     .setData(homeJson.values
-                                            //         .toList()[homeIndex]);
-                                            Map productRes = isLogin
-                                                ? await ApiServices
-                                                    .getRequestPincode(
-                                                        homeJsonUrl.values
-                                                                    .toList()[
-                                                                homeIndex] +
-                                                            "?json=1")
-                                                : await ApiServices.getRequest(
-                                                    homeJsonUrl.values.toList()[
-                                                            homeIndex] +
-                                                        "?json=1");
-                                            if (productRes != null) {
-                                              // stopLoading();
-                                              // Provider.of<ProductListData>(contexss
-                                              print(
-                                                  "befor view all the items are" +
-                                                      homeJsonUrl.values
-                                                          .toList()[homeIndex]);
-                                              print(productRes["items"]
-                                                  .toString());
-                                              Provider.of<ProductListData>(
-                                                      context,
-                                                      listen: false)
-                                                  .setProductListData(
-                                                      productRes);
-                                              Provider.of<ProductListData>(
-                                                      context,
-                                                      listen: false)
-                                                  .setData(
-                                                      List<
-                                                          Item>.from((productRes[
-                                                                  "items"]
-                                                              ?.map((x) =>
+                                              Colors.redAccent),
+                                    )))
+                                : Container();
+                          }),
+                          // All Groceries
+                          ListView.separated(
+                              physics: NeverScrollableScrollPhysics(),
+                              shrinkWrap: true,
+                              separatorBuilder: (context, sepearatedIndecx) {
+                                return Container(height: 10);
+                              },
+                              itemCount: homeJson.length,
+                              itemBuilder: (context, homeIndex) {
+                                if (homeJson.values
+                                        .toList()[homeIndex]
+                                        .values
+                                        .toList()[0]
+                                        ?.isNotEmpty ??
+                                    true)
+                                  return Column(children: <Widget>[
+                                    HomeTitle(
+                                      viewAllPressed: () async {
+                                        // Provider.of<ProductListData>(context,
+                                        //         listen: false)
+                                        //     .setData(homeJson.values
+                                        //         .toList()[homeIndex]);
+                                        Map productRes = isLogin
+                                            ? await ApiServices
+                                                .getRequestPincode(homeJsonUrl
+                                                        .values
+                                                        .toList()[homeIndex] +
+                                                    "?json=1")
+                                            : await ApiServices.getRequest(
+                                                homeJsonUrl.values
+                                                        .toList()[homeIndex] +
+                                                    "?json=1");
+                                        if (productRes != null) {
+                                          // stopLoading();
+                                          // Provider.of<ProductListData>(contexss
+                                          print("befor view all the items are" +
+                                              homeJsonUrl.values
+                                                  .toList()[homeIndex]);
+                                          print(productRes["items"].toString());
+                                          Provider.of<ProductListData>(context,
+                                                  listen: false)
+                                              .setProductListData(productRes);
+                                          Provider.of<ProductListData>(context,
+                                                  listen: false)
+                                              .setData(
+                                                  List<Item>.from(
+                                                      (productRes["items"]?.map(
+                                                              (x) =>
                                                                   Item.fromMap(
                                                                       x))) ??
                                                           []),
-                                                      isSubCat: false);
-                                            }
-                                            // else {
-                                            //   // stopLoading();
-                                            //   Fluttertoast.showToast(
-                                            //     msg: "Server is not responding",
-                                            //     backgroundColor: Colors.grey[400],
-                                            //     toastLength: Toast.LENGTH_LONG,
-                                            //     gravity: ToastGravity.CENTER,
-                                            //     timeInSecForIosWeb: 2,
-                                            //   );
-                                            // }
+                                                  isSubCat: false);
+                                        }
+                                        // else {
+                                        //   // stopLoading();
+                                        //   Fluttertoast.showToast(
+                                        //     msg: "Server is not responding",
+                                        //     backgroundColor: Colors.grey[400],
+                                        //     toastLength: Toast.LENGTH_LONG,
+                                        //     gravity: ToastGravity.CENTER,
+                                        //     timeInSecForIosWeb: 2,
+                                        //   );
+                                        // }
 
-                                            Navigator.of(context)
-                                                .push(MaterialPageRoute(
-                                                    builder: (_) => ProductList(
-                                                          linker: homeJsonUrl
-                                                                  .values
-                                                                  .toList()[
-                                                              homeIndex],
-                                                          isCat: "false",
-                                                          isLogin: isLogin,
-                                                        )));
-                                            // Navigator.of(context)
-                                            //     .push(MaterialPageRoute(
-                                            //         builder: (_) => ProductList(
+                                        Navigator.of(context)
+                                            .push(MaterialPageRoute(
+                                                builder: (_) => ProductList(
+                                                      linker: homeJsonUrl.values
+                                                          .toList()[homeIndex],
+                                                      isCat: "false",
+                                                      isLogin: isLogin,
+                                                    )));
+                                        // Navigator.of(context)
+                                        //     .push(MaterialPageRoute(
+                                        //         builder: (_) => ProductList(
 
-                                            //             )));
-                                            // Navigator.of(context)
-                                            //     .pushNamed("/ProductList");
-                                          },
-                                          title: homeJson.values
-                                              .toList()[homeIndex]
-                                              .keys
-                                              .toList()[0],
-                                        ),
-                                        CardsCarouselWidget(
-                                            productList: homeJson.values
-                                                .toList()[homeIndex]
-                                                .values
-                                                .toList()[0],
-                                            EComList: catList,
-                                            heroTag: homeJson.keys
-                                                .toList()[homeIndex]),
-                                        homeIndex == homeJson.length - 1
-                                            ? SizedBox(
-                                                height: 50,
-                                              )
-                                            : Container()
-                                      ]);
-                                    else {
-                                      return Container();
-                                    }
-                                  }),
-                            ]),
-                      ),
-                    ),
-                    floatingActionButtonLocation:
-                        FloatingActionButtonLocation.endFloat,
-                    floatingActionButton: PinCodeFab(),
+                                        //             )));
+                                        // Navigator.of(context)
+                                        //     .pushNamed("/ProductList");
+                                      },
+                                      title: homeJson.values
+                                          .toList()[homeIndex]
+                                          .keys
+                                          .toList()[0],
+                                    ),
+                                    CardsCarouselWidget(
+                                        productList: homeJson.values
+                                            .toList()[homeIndex]
+                                            .values
+                                            .toList()[0],
+                                        EComList: catList,
+                                        heroTag:
+                                            homeJson.keys.toList()[homeIndex]),
+                                    homeIndex == homeJson.length - 1
+                                        ? SizedBox(
+                                            height: 50,
+                                          )
+                                        : Container()
+                                  ]);
+                                else {
+                                  return Container();
+                                }
+                              }),
+                        ]),
                   ),
-                );
-              }));
+                ),
+                floatingActionButtonLocation:
+                    FloatingActionButtonLocation.endFloat,
+                floatingActionButton: PinCodeFab(),
+              ),
+            );
+          });
   }
 }

@@ -197,12 +197,12 @@ class _OtpScreenState extends State<OtpScreen> {
                                       print("res is not null ${res["status"]}");
                                       if (res["status"]) {
                                         print("status is true");
-                                        //
                                         setState(() {
                                           _resendLoading = false;
                                           _resendEnable = false;
                                         });
                                         enableResend();
+
                                         FocusScope.of(context).unfocus();
 
                                         Fluttertoast.showToast(
